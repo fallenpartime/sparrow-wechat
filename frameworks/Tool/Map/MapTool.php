@@ -13,6 +13,7 @@ class MapTool
     /**
      * 获取地址坐标
      * @param $address
+     * @param $request
      * @return array
      */
     public static function getAddressPosition($address, $request)
