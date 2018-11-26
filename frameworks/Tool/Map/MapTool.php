@@ -7,23 +7,34 @@
 namespace Frameworks\Tool\Map;
 
 use Frameworks\Tool\Http\CurlTool;
+use Illuminate\Http\Request;
 
 class MapTool
 {
+    protected $request = null;
+
+    /**
+     * MapTool constructor.
+     * @param Request $request
+     */
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+    }
+
     /**
      * 获取地址坐标
      * @param $address
-     * @param $request
      * @return array
      */
-    public static function getAddressPosition($address, $request)
+    public function getAddressPosition($address)
     {
         $emptyPosition = [0, 0];
         if (empty($address)) {
             return $emptyPosition;
         }
         $url = MapConfig::getPositionUrl($address);
-        $result = (new CurlTool($request))->curl($url);
+        $result = (new CurlTool($this->request))->curl($url);
         if (empty($result)) {
             return $emptyPosition;
         }
