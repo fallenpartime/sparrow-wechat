@@ -34,7 +34,7 @@ trait RequestTrait
      */
     public function isPost()
     {
-        return $this->isMethod('POST');
+        return $this->request->isMethod('POST');
     }
 
     /**
