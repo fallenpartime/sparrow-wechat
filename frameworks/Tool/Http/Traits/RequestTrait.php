@@ -43,7 +43,7 @@ trait RequestTrait
      */
     public function getIp()
     {
-        return $this->request->getClientIp();
+        return $this->request->ip();
     }
 //    public static function getIp(){
 //        if(getenv('HTTP_CLIENT_IP') && strcasecmp(getenv('HTTP_CLIENT_IP'), 'unknown')){
